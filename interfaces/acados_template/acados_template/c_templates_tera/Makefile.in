@@ -162,6 +162,7 @@ CPPFLAGS+= -I$(INCLUDE_PATH)
 CPPFLAGS+= -I$(INCLUDE_PATH)/acados
 CPPFLAGS+= -I$(INCLUDE_PATH)/blasfeo/include
 CPPFLAGS+= -I$(INCLUDE_PATH)/hpipm/include
+CPPFLAGS+= -I$(INCLUDE_PATH)/mujoco-3.2.4/include
  {%- if qp_solver == "FULL_CONDENSING_QPOASES" %}
 CPPFLAGS+= -I $(INCLUDE_PATH)/qpOASES_e/
  {%- endif %}

@@ -85,6 +85,9 @@ class ZoroDescription:
     In case this is used W_k = W + W_{add}^k.
     """
 
+    input_G: bool = False
+    """Determines if the concatenation of G^k is an input to the custom update function, specified in column-major format"""
+
     # Outputs:
     output_P_matrices: bool = False
     """Determines if the matrices P_k are outputs of the custom update function"""
@@ -126,6 +129,9 @@ def process_zoro_description(zoro_description: ZoroDescription):
         i_component += 1
     if zoro_description.input_W_add_diag:
         print(f"{i_component}) input: concatenation of diag(W_gp^k) for i=0,...,N-1")
+        i_component += 1
+    if zoro_description.input_G:
+        print(f"{i_component}) input: concatenation of G^k for i=0,...,N-1")
         i_component += 1
     if zoro_description.output_P_matrices:
         print(f"{i_component}) output: concatenation of colmaj(P^k) for i=0,...,N")
