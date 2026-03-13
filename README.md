@@ -1,3 +1,30 @@
+## Installation differences compared to acados
+For using acados with linked MuJoCo dynamics, first clone this repo and the submodules of acados:
+```bash
+git clone https://github.com/AIMotionLab-SZTAKI/acados-mujoco-zoro.git
+cd acados-mujoco-zoro
+git submodule update --recursive --init
+```
+
+Install acados:
+```bash
+mkdir -p build
+cd build
+cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+make install -j4
+```
+
+Then, and most importantly, put the MuJoCo binaries into the include directory of acados, with
+```bash
+wget https://github.com/google-deepmind/mujoco/releases/download/3.2.4/mujoco-3.2.4-linux-x86_64.tar.gz
+tar -xf mujoco-3.2.4-linux-x86_64.tar.gz -C /path/to/acados-mujoco-zoro/include
+```
+Finally, if you use the python interface, export the MuJoCo path as well:
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"<acados_root>/lib:<acados_root>/include/mujoco-3.2.4"
+export ACADOS_SOURCE_DIR="<acados_root>"
+```
+
 <!-- # acados -->
 
 ![](docs/_static/acados_logo.png)
